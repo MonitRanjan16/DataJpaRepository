@@ -1,0 +1,27 @@
+package com.monit;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import com.monit.entity.User;
+import com.monit.repository.UserRepository;
+
+@SpringBootApplication
+public class SpringbootDataJpa11Application {
+
+    public static void main(String[] args) {
+        ConfigurableApplicationContext context = SpringApplication.run(SpringbootDataJpa11Application.class, args);
+        
+        UserRepository repo = context.getBean(UserRepository.class);
+        
+        User u = new User();
+        u.setUserId(121);
+        u.setUserName("Shiva");
+        u.setUserCity("Patna");
+        u.setUserPhno(1234567890); 
+        
+        repo.save(u);
+        
+        System.out.println("Insert recard sucessfully");
+    }
+}
